@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results</title>
+</head>
+<body>
+    <h1>Results</h1>
+    <p>Total number of participants: {{ num_participants }}</p>
+    <p>Total number of vote: {{ num_countries }}</p>
+    <p>Top 3 favorite countries: {{ top_3_countries }}</p>
+
+    <h2>Last-24-Hour Vote Distribution</h2>
+    <img src="{{ url_for('static', filename='P_24z_chart.png') }}" alt="Pie chart of vote distribution">
+
+</body>
+</html>

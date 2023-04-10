@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Travel Preferences</title>
+    <script>
+        function validateForm() {
+            var checkboxes = document.getElementsByName('countries');
+            var checked = 0;
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    checked++;
+                }
+            }
+            if (checked == 0) {
+                alert('Please select at least one country.');
+                return false;
+            }
+            if (checked > 5) {
+                alert('Please select no more than 5 countries.');
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h1>Travel Preferences</h1>
+    <form action="/submit" method="post" onsubmit="return validateForm()">
+        <label for="countries">Select up to 5 countries:</label>
+        {% for country in countries %}
+        <div>
+            <input type="checkbox" name="countries" value="{{ country }}" {% if country in selected_countries %}checked{% endif %}>
+            {{ country }}
+        </div>
+        {% endfor %}
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
